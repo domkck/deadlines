@@ -22,11 +22,11 @@
 					<div class="login">
 						<p><a href="#" data-reveal-id="signup" class="medium secondary button">Signup</a></p>
 					</div>
-						<h1 class="logo" align="center">Deadlines</h1>
-					</div>
-					<p align="center">Add deadlines and recieve reminders by text and email.</p>
+					<h1 class="logo" align="center">Deadlines</h1>
 				</div>
+				<p align="center">Add deadlines and recieve reminders by text and email.</p>
 			</div>
+		</div>
 
 		<div class="row">
 			<div class="large-12 columns">
@@ -97,10 +97,6 @@
 	</div>
 	<script src="bower_components/todomvc-common/base.js"></script>
 	<script src="bower_components/angular/angular.js"></script>
-	<script src="bower_components/jquery/jquery.js"></script>
-	<script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
-	<script src="bower_components/angular/angular.js"></script>
-	<script src="bower_components/angular-ui-date/src/date.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/controllers/deadlinesCtrl.js"></script>
 	<script src="js/services/deadlineService.js"></script>
@@ -121,31 +117,31 @@
 	$(document).foundation();
 	</script>
 
-<div id="login" class="reveal-modal tiny">
-	<h2 align="center" class="subheader">Go Go Go.</h2>
-	<p>Enter your Email:</p>
-	<input type="text" name="email" placeholder="Email Address">
-	<p>Pop in your Password</p>
-	<input type="text" name="password" placeholder="Password">
-	<div align="center">
-		<p><a href="#" class="medium button">Let's Go!</a></p>
+	<div id="login" class="reveal-modal tiny">
+		<h2 align="center" class="subheader">Go Go Go.</h2>
+		<p>Enter your Email:</p>
+		<input type="text" name="email" placeholder="Email Address">
+		<p>Pop in your Password</p>
+		<input type="text" name="password" placeholder="Password">
+		<div align="center">
+			<p><a href="#" class="medium button">Let's Go!</a></p>
+		</div>
+		<a class="close-reveal-modal">&#215;</a>
 	</div>
-	<a class="close-reveal-modal">&#215;</a>
-</div>
 
-<div id="signup" class="reveal-modal tiny">
-	<h2 align="center" class="subheader">Sign Up</h2>
-	<p>Enter your Email:</p>
-	<input type="text" name="email" placeholder="Email Address">
-	<p>Enter your Mobile Phone Number:</p>
-	<input type="text" name="phone" placeholder="Mobile Number">
-	<p>Pop in your Password:</p>
-	<input type="text" name="password" placeholder="Password">
-	<div align="center">
-		<p><a href="#" class="medium button">Sign Me Up!</a></p>
+	<div id="signup" class="reveal-modal tiny">
+		<h2 align="center" class="subheader">Sign Up</h2>
+		<p>Enter your Email:</p>
+		<input type="text" name="email" placeholder="Email Address">
+		<p>Enter your Mobile Phone Number:</p>
+		<input type="text" name="phone" placeholder="Mobile Number">
+		<p>Pop in your Password:</p>
+		<input type="text" name="password" placeholder="Password">
+		<div align="center">
+			<p><a href="#" class="medium button">Sign Me Up!</a></p>
+		</div>
+		<a class="close-reveal-modal">&#215;</a>
 	</div>
-	<a class="close-reveal-modal">&#215;</a>
-</div>
 
 </body>
 </html>

@@ -6,4 +6,4 @@
  *
  * @type {angular.Module}
  */
-var todomvc = angular.module('todomvc', ['ui.date']);
+var todomvc = angular.module('todomvc', []);
