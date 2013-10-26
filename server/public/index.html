@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en" ng-app="todomvc" data-framework="angularjs">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width">
+	<title>Deadlines</title>
+	<link rel="stylesheet" href="/css/foundation.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<style>[ng-cloak] { display: none; }</style>
+</head>
+<body>
+	<div class="wrapper">
+
+		<div class="header">
+			<div class="row">
+				<div class="large-12 columns">
+					<p align="right"><a href="#" class="medium secondary button">Login</a></p>
+					<div>
+						<h1 class="logo" align="center">Deadlines</h1>
+					</div>
+					<p align="center">Add deadlines and recieve reminders by text and email.</p>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="row">
+			<div class="large-12 columns">
+				<h1><small>Add Your Name</small></h1>
+				<p><a href="#" class="button">Add Deadline</a></p>
+			</div>
+
+			<div align="center" class="large-12 columns">
+				<section id="deadlinesapp" ng-controller="DeadlinesCtrl">
+					<section id="main">
+						<table>
+							<thead>
+								<tr>
+									<th>Module</th>
+									<th>Task</th>
+									<th>Deadline</th>
+								</tr>
+							</thead>
+							<tbody id="deadlines-list">
+
+								<tr ng-repeat="deadline in deadlines">
+									<td><label>{{deadline.module.name}}</label></td>
+									<td><label>{{deadline.name}}</label></td>
+									<td><label>{{deadline.due}}</label></td>
+								</tr>
+								<tr>
+									<form id="deadline-form" ng-submit="addDeadline()" class="custom">
+										<td ng-show="!addingDeadline" colspan="3">
+											<a href="#" class="button tiny secondary" ng-click="addClicked()">Add Deadline</a>
+										</td>
+
+										<td ng-show="addingDeadline">
+											<select ng-model="newDModule" ng-options="m.name for m in modules"></select>
+										</td>
+										<td ng-show="addingDeadline">
+											<input id="new-d-task" placeholder="Task" type="text" name="task" ng-model="newDTask" autofocus>
+										</td>
+										<td ng-show="addingDeadline" id="new-d-submit-td">
+											<input id="new-d-due" placeholder="Due" type="text" name="deadline" ng-model="newDDue">
+											<p style="float: left; max-width: 10px;">&nbsp;&nbsp;</p>
+											<input id="new-d-submit" type="Submit" class="button tiny secondary"></input>
+										</td>
+									</form>
+								</tr>
+							</tbody>
+
+						</table>
+					</section>
+				</section>
+			</div>
+
+		</div>
+
+
+		<!-- Does something -->
+		<div class="push"></div>
+		<!-- Ends the wrapper -->
+	</div>
+
+
+	<!-- Footer -->
+	<div class="footer">
+		<footer class="row">
+			<div class="large-12 columns">
+				<hr />
+				<p align="center">Made hastily at the <a href="http://ucle.co/events/">UCL Hackathon</a> by the guys that are making <a href="http://crevent.co/">Crevent</a>.</p>
+			</div>
+		</footer>
+	</div>
+	<script src="bower_components/todomvc-common/base.js"></script>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/controllers/deadlinesCtrl.js"></script>
+	<script src="js/services/deadlineService.js"></script>
+	<script src="js/controllers/todoCtrl.js"></script>
+	<script src="js/services/todoStorage.js"></script>
+	<script src="js/directives/todoFocus.js"></script>
+	<script src="js/directives/todoBlur.js"></script>
+	<script src="js/directives/todoEscape.js"></script>
+	<script>
+	document.write('<script src=' +
+		('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
+		'.js><\/script>')
+	</script>
+	<script src="js/foundation.min.js"></script>
+	<script>
+	$(document).foundation();
+	</script>
+</body>
+</html>

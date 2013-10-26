@@ -47,6 +47,9 @@ post '/deadlines' do
   content_type "application/json"
 
   params = JSON.parse(request.body.read)
+  puts "------"
+  puts params
+  puts "------"
   unless params['name'] and params['due'] and params['module']
     halt ({ :error => 'Must specify deadline name, due date and module' }).to_json
   end
