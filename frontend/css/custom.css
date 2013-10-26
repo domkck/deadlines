@@ -31,3 +31,14 @@ margin: 0 auto -4em;
 .footer, .push {
 height: 4em;
 }
+
+button.secondary, .button.secondary {
+	background-color: #FFFFFF;
+    color: #2BA6CB; 
+    text-shadow: rgba(0,0,0,0) 0 1px 1px;
+}
+
+button.secondary:hover, button.secondary:focus, .button.secondary:hover, .button.secondary:focus {
+      background-color: #e8e8e8; }
+button.secondary:hover, button.secondary:focus, .button.secondary:hover, .button.secondary:focus {
+      color: #3780C2; }
