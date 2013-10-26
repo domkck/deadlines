@@ -1,6 +1,5 @@
 /*global angular */
 /*jshint unused:false */
-'use strict';
 
 /**
  * The main TodoMVC app module
