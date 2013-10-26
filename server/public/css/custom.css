@@ -50,10 +50,12 @@ button.secondary:hover, button.secondary:focus, .button.secondary:hover, .button
 /* login/signup hacks */
 .login {
 	float: left;
+	margin-top: 20px;
 }
 
 .signup {
 	float: right;
+	margin-top: 20px;
 }
 
 /* Made by the guys...*/

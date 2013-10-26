@@ -28,8 +28,11 @@
 			</div>
 
 		<div class="row">
+
 			<div class="large-12 columns">
+				<hr />
 				<h1><small>Add Your Name</small></h1>
+
 			</div>
 
 			<div align="center" class="large-12 columns">
@@ -53,7 +56,6 @@
 								<tr>
 									<form id="deadline-form" ng-submit="addDeadline()" class="custom">
 										<td ng-show="!addingDeadline" colspan="3">
-											<a href="#" class="button small secondary" ng-click="addClicked()">Add Deadline</a>
 										</td>
 
 										<td ng-show="addingDeadline">
@@ -69,13 +71,15 @@
 										<td ng-show="addingDeadline" id="new-d-submit-td">
 											<input id="new-d-due" placeholder="Due" type="datetime" name="deadline" ng-model="newDDue">
 											<p style="float: left; max-width: 10px;">&nbsp;&nbsp;</p>
-											<input ng-disabled="!newDModule" id="new-d-submit" type="Submit" class="button tiny secondary"></input>
+											
 										</td>
 									</form>
 								</tr>
 							</tbody>
 
 						</table>
+							<a href="#" class="button small secondary" ng-click="addClicked()">Add Deadline</a>
+							<input ng-disabled="!newDModule" id="new-d-submit" type="Submit" class="button small secondary"></input>
 					</section>
 				</section>
 			</div>
@@ -142,6 +146,20 @@
 	<input type="text" name="password" placeholder="Password">
 	<div align="center">
 		<p><a href="#" class="medium button">Sign Me Up!</a></p>
+	</div>
+	<a class="close-reveal-modal">&#215;</a>
+</div>
+
+<div id="addModule" class="reveal-modal tiny">
+	<h2 align="center" class="subheader">Add Module</h2>
+	<p>Enter your Email:</p>
+	<input type="text" name="email" placeholder="Email Address">
+	<p>Enter your Mobile Phone Number:</p>
+	<input type="text" name="phone" placeholder="Mobile Number">
+	<p>Pop in your Password:</p>
+	<input type="text" name="password" placeholder="Password">
+	<div align="center">
+		<p><a href="#" class="medium button">Add Module</a></p>
 	</div>
 	<a class="close-reveal-modal">&#215;</a>
 </div>
