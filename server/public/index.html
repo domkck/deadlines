@@ -7,6 +7,7 @@
 	<title>Deadlines</title>
 	<link rel="stylesheet" href="/css/foundation.css">
 	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="stylesheet" href="/bower_components/jquery-ui/themes/smoothness/jquery-ui.css"/>
 	<style>[ng-cloak] { display: none; }</style>
 </head>
 <body>
@@ -23,8 +24,6 @@
 				</div>
 			</div>
 		</div>
-
-
 
 		<div class="row">
 			<div class="large-12 columns">
@@ -51,10 +50,6 @@
 								</tr>
 								<tr>
 									<form id="deadline-form" ng-submit="addDeadline()" class="custom">
-										<td ng-show="!addingDeadline" colspan="3">
-											<a href="#" class="button tiny secondary" ng-click="addClicked()">Add Deadline</a>
-										</td>
-
 										<td ng-show="addingDeadline">
 											<span class="nullable">
 												<select ng-model="newDModule" ng-options="m.name for m in modules">
@@ -66,15 +61,15 @@
 											<input id="new-d-task" placeholder="Task" type="text" name="task" ng-model="newDTask" autofocus>
 										</td>
 										<td ng-show="addingDeadline" id="new-d-submit-td">
-											<input id="new-d-due" placeholder="Due" type="datetime" name="deadline" ng-model="newDDue">
-											<p style="float: left; max-width: 10px;">&nbsp;&nbsp;</p>
-											<input ng-disabled="!newDModule" id="new-d-submit" type="Submit" class="button tiny secondary"></input>
+											<input id="new-d-due" placeholder="Due (dd/mm/yy hh:mm)" type="datetime" name="deadline" ng-model="newDDue">
 										</td>
 									</form>
 								</tr>
 							</tbody>
 
 						</table>
+						<a href="#" ng-show="addingDeadline" ng-disabled="!newDModule || !newDTask || !newDDue" class="button tiny secondary" ng-click="addDeadline()">Add</a>
+						<a href="#" ng-show="!addingDeadline" class="button tiny secondary" ng-click="addClicked()">Add Deadline</a>
 					</section>
 				</section>
 			</div>
@@ -99,6 +94,10 @@
 	</div>
 	<script src="bower_components/todomvc-common/base.js"></script>
 	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/jquery/jquery.js"></script>
+	<script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-ui-date/src/date.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/controllers/deadlinesCtrl.js"></script>
 	<script src="js/services/deadlineService.js"></script>
