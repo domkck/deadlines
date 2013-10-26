@@ -29,7 +29,6 @@
 		<div class="row">
 			<div class="large-12 columns">
 				<h1><small>Add Your Name</small></h1>
-				<p><a href="#" class="button">Add Deadline</a></p>
 			</div>
 
 			<div align="center" class="large-12 columns">
@@ -57,15 +56,19 @@
 										</td>
 
 										<td ng-show="addingDeadline">
-											<select ng-model="newDModule" ng-options="m.name for m in modules"></select>
+											<span class="nullable">
+												<select ng-model="newDModule" ng-options="m.name for m in modules">
+													<option value="" DISABLED>Select module</option>
+												</select>
+											</span>
 										</td>
 										<td ng-show="addingDeadline">
 											<input id="new-d-task" placeholder="Task" type="text" name="task" ng-model="newDTask" autofocus>
 										</td>
 										<td ng-show="addingDeadline" id="new-d-submit-td">
-											<input id="new-d-due" placeholder="Due" type="text" name="deadline" ng-model="newDDue">
+											<input id="new-d-due" placeholder="Due" type="datetime" name="deadline" ng-model="newDDue">
 											<p style="float: left; max-width: 10px;">&nbsp;&nbsp;</p>
-											<input id="new-d-submit" type="Submit" class="button tiny secondary"></input>
+											<input ng-disabled="!newDModule" id="new-d-submit" type="Submit" class="button tiny secondary"></input>
 										</td>
 									</form>
 								</tr>
