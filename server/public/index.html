@@ -16,14 +16,17 @@
 		<div class="header">
 			<div class="row">
 				<div class="large-12 columns">
-					<p align="right"><a href="#" class="medium secondary button">Login</a></p>
-					<div>
+					<div class="signup">
+						<p><a href="#" data-reveal-id="login" class="medium secondary button">Login</a></p>
+					</div>
+					<div class="login">
+						<p><a href="#" data-reveal-id="signup" class="medium secondary button">Signup</a></p>
+					</div>
 						<h1 class="logo" align="center">Deadlines</h1>
 					</div>
 					<p align="center">Add deadlines and recieve reminders by text and email.</p>
 				</div>
 			</div>
-		</div>
 
 		<div class="row">
 			<div class="large-12 columns">
@@ -88,7 +91,7 @@
 		<footer class="row">
 			<div class="large-12 columns">
 				<hr />
-				<p align="center">Made hastily at the <a href="http://ucle.co/events/">UCL Hackathon</a> by the guys that are making <a href="http://crevent.co/">Crevent</a>.</p>
+				<span class="made"><p align="center">Made hastily in under 24 hours at the <a href="http://ucle.co/events/">UCL Hackathon</a> by the guys that are making <a href="http://crevent.co/">Crevent</a>.</p></span>
 			</div>
 		</footer>
 	</div>
@@ -112,8 +115,37 @@
 		'.js><\/script>')
 	</script>
 	<script src="js/foundation.min.js"></script>
+
+	<script src="js/foundation/foundation.reveal.js"></script>
 	<script>
 	$(document).foundation();
 	</script>
+
+<div id="login" class="reveal-modal tiny">
+	<h2 align="center" class="subheader">Go Go Go.</h2>
+	<p>Enter your Email:</p>
+	<input type="text" name="email" placeholder="Email Address">
+	<p>Pop in your Password</p>
+	<input type="text" name="password" placeholder="Password">
+	<div align="center">
+		<p><a href="#" class="medium button">Let's Go!</a></p>
+	</div>
+	<a class="close-reveal-modal">&#215;</a>
+</div>
+
+<div id="signup" class="reveal-modal tiny">
+	<h2 align="center" class="subheader">Sign Up</h2>
+	<p>Enter your Email:</p>
+	<input type="text" name="email" placeholder="Email Address">
+	<p>Enter your Mobile Phone Number:</p>
+	<input type="text" name="phone" placeholder="Mobile Number">
+	<p>Pop in your Password:</p>
+	<input type="text" name="password" placeholder="Password">
+	<div align="center">
+		<p><a href="#" class="medium button">Sign Me Up!</a></p>
+	</div>
+	<a class="close-reveal-modal">&#215;</a>
+</div>
+
 </body>
 </html>
