@@ -5,6 +5,8 @@ require 'sinatra'
 require 'sinatra/cookies'
 require 'ripple'
 
+require './texts'
+
 class ModuleModel # Cause calling it Module fucks up the whole of Ruby
   include Ripple::Document
   property :name, String
@@ -175,6 +177,11 @@ post '/deadlines' do
   deadline.save
   mod.deadlines << deadline
   mod.save
+
+  if @user and @user.number
+    send_text(@user.number, deadline.name, deadline.due.to_s)
+  end
+
   deadline.to_json
 end
 
