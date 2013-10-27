@@ -7,7 +7,6 @@
 	<title>Deadlines</title>
 	<link rel="stylesheet" href="/css/foundation.css">
 	<link rel="stylesheet" href="/css/custom.css">
-	<link rel="stylesheet" href="/bower_components/jquery-ui/themes/smoothness/jquery-ui.css"/>
 	<style>[ng-cloak] { display: none; }</style>
 </head>
 <body>
@@ -55,7 +54,7 @@
 									<form id="deadline-form" ng-submit="addDeadline()" class="custom">
 										<td ng-show="addingDeadline">
 											<span class="nullable">
-												<select ng-model="newDModule" ng-options="m.name for m in modules">
+												<select ng-change="moduleChanged()" ng-model="newDModule" ng-options="m.name for m in modules">
 													<option value="" DISABLED>Select module</option>
 												</select>
 											</span>
@@ -71,7 +70,7 @@
 							</tbody>
 
 						</table>
-						<a href="#" ng-show="addingDeadline" ng-disabled="!newDModule || !newDTask || !newDDue" class="button tiny secondary" ng-click="addDeadline()">Add</a>
+						<a href="#" ng-show="addingDeadline" ng-disabled="!newDModule.key || !newDTask || !newDDue" class="button tiny secondary" ng-click="addDeadline()">Add</a>
 						<a href="#" ng-show="!addingDeadline" class="button tiny secondary" ng-click="addClicked()">Add Deadline</a>
 					</section>
 				</section>
@@ -95,6 +94,8 @@
 			</div>
 		</footer>
 	</div>
+	<script src="js/vendor/underscore-min.js"></script>
+	<script src="js/vendor/moment.min.js"></script>
 	<script src="bower_components/todomvc-common/base.js"></script>
 	<script src="bower_components/angular/angular.js"></script>
 	<script src="js/app.js"></script>
