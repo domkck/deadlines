@@ -6,60 +6,67 @@
  * - exposes the model to the template and provides event handlers
  */
 todomvc.controller('DeadlinesCtrl', function DeadlinesCtrl($scope, $rootScope, $location, deadlineService, filterFilter) {
-	deadlineService.get(function (data) {
-		deadlineService.getModules(function (mods) {
-			mods.push({"name": "Add module...", "key": null});
-			$scope.addingDeadline = false;
-			var deadlines = $scope.deadlines = data;
-			var modules = $scope.modules = mods;
-
-			if ($location.path() === '') {
-				$location.path('/');
-			}
-
-			$scope.location = $location;
-
-			$scope.$watch('deadlines', function (newValue, oldValue) {
-				if (newValue.length > oldValue.length) {
-					deadlineService.post(newValue[newValue.length-1]);
-					$scope.deadlines = _.sortBy(newValue, function(item) {return item.dueDate;});
-				}
-			}, true);
-
-			$scope.addClicked = function () {
-				$scope.addingDeadline = true;
-			};
-			$scope.addDeadline = function () {
-				if (!$scope.newDModule.key || !$scope.newDTask || !$scope.newDDue) {
-					return false;
-				}
-				var module = $scope.newDModule;
-				var name = $scope.newDTask;
-				var dueDate = moment($scope.newDDue, "DD/MM/YY HH:mm")._d;
-				var due = moment(dueDate).fromNow() + " (" + moment(dueDate).format("DD/MM/YY HH:mm") + ")";
-
-				deadlines.push({
-					module: module,
-					name: name,
-					due: due,
-					dueDate: dueDate
-				});
-
-				$scope.newDModule = $scope.newDTask = $scope.newDDue = '';
+	var render = function () {
+		deadlineService.get(function (data) {
+			console.log("Refresh");
+			deadlineService.getModules(function (mods) {
+				mods.push({"name": "Add module...", "key": null});
 				$scope.addingDeadline = false;
-			};
-			$scope.moduleChanged = function () {
-				if ($scope.newDModule.key === null) {
-					$('#addModule').foundation('reveal', 'open');
-				}
-			};
+				var deadlines = $scope.deadlines = data;
+				var modules = $scope.modules = mods;
 
-			$rootScope.$on('newModule', function (event, mod) {
-				var addM = $scope.modules.pop();
-				$scope.modules.push(mod);
-				$scope.modules.push(addM);
-				$scope.newDModule = mod;
+				if ($location.path() === '') {
+					$location.path('/');
+				}
+
+				$scope.location = $location;
+
+				$scope.$watch('deadlines', function (newValue, oldValue) {
+					if (newValue.length > oldValue.length) {
+						deadlineService.post(newValue[newValue.length-1]);
+						$scope.deadlines = _.sortBy(newValue, function(item) {return item.dueDate;});
+					}
+				}, true);
+
+				$scope.addClicked = function () {
+					$scope.addingDeadline = true;
+				};
+				$scope.addDeadline = function () {
+					if (!$scope.newDModule.key || !$scope.newDTask || !$scope.newDDue) {
+						return false;
+					}
+					var module = $scope.newDModule;
+					var name = $scope.newDTask;
+					var dueDate = moment($scope.newDDue, "DD/MM/YY HH:mm")._d;
+					var due = moment(dueDate).fromNow() + " (" + moment(dueDate).format("DD/MM/YY HH:mm") + ")";
+
+					deadlines.push({
+						module: module,
+						name: name,
+						due: due,
+						dueDate: dueDate
+					});
+
+					$scope.newDModule = $scope.newDTask = $scope.newDDue = '';
+					$scope.addingDeadline = false;
+				};
+				$scope.moduleChanged = function () {
+					if ($scope.newDModule.key === null) {
+						$('#addModule').foundation('reveal', 'open');
+					}
+				};
+
+				$rootScope.$on('newModule', function (event, mod) {
+					var addM = $scope.modules.pop();
+					$scope.modules.push(mod);
+					$scope.modules.push(addM);
+					$scope.newDModule = mod;
+				});
 			});
 		});
-	});
+	};
+
+	render();
+
+	$rootScope.$on('refresh', render);
 });

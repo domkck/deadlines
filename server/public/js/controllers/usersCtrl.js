@@ -8,9 +8,10 @@
 todomvc.controller('UsersCtrl', function UsersCtrl($scope, $cookies, $rootScope, $location, userService, filterFilter) {
 	$scope.login = function () {
 		userService.login({email: $scope.email, password: $scope.password}, function (data) {
-			$rootScope.user = data.user;
-			$cookies.session_key = data.user.session;
+			$rootScope.user = data;
+			$cookies.session_key = data.session;
 			$("#login").foundation('reveal', 'close');
+			$rootScope.$emit('refresh');
 		});
 	};
 

@@ -45,6 +45,16 @@ before do
   end
 end
 
+helpers do
+  def send_user(user)
+    mods = []
+    user.modules.each do |mod|
+      mods << mod.serializable_hash
+    end
+    user.serializable_hash.merge({ :modules => mods }).to_json
+  end
+end
+
 post '/users' do
   content_type "application/json"
 
@@ -66,11 +76,29 @@ post '/users' do
   user.to_json
 end
 
+post '/users/add_module/:id' do
+  if not @user
+    status 401
+    halt "Must be logged in"
+  end
+
+  content_type "application/json"
+
+  mod = ModuleModel.find(params['id'])
+  puts mod
+  @user.modules << mod
+  @user.save
+  puts @user
+
+  send_user(@user)
+end
+
+
 post '/login' do
   content_type "application/json"
 
   if @user
-    halt @user.to_json
+    halt send_user(@user)
   end
 
   params = JSON.parse(request.body.read)
@@ -101,11 +129,19 @@ end
 
 get '/deadlines' do
   content_type "application/json"
-  deadlines = []
-  Deadline.all.each do |deadline|
-    deadlines << deadline.serializable_hash.merge({ :module => deadline.module.serializable_hash })
+  deadlines_hash = []
+  if @user
+    @user.modules.each do |mod|
+      mod.deadlines.each do |d|
+        deadlines_hash << d.serializable_hash.merge({ :module => d.module.serializable_hash })
+      end
+    end
+  else
+    Deadline.all.each do |deadline|
+      deadlines_hash << deadline.serializable_hash.merge({ :module => deadline.module.serializable_hash })
+    end
   end
-  deadlines.to_json
+  deadlines_hash.to_json
 end
 
 get '/deadlines/:id' do

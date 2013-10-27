@@ -25,14 +25,26 @@ todomvc.controller('ModulesCtrl', function ModulesCtrl($scope, $rootScope, $loca
 			}
 		};
 
+		var addModuleToUser = function (module) {
+			moduleService.addToUser(module, function (user) {
+				$rootScope.user = user;
+				$rootScope.$emit('refresh');
+			});
+		};
+		$scope.addModuleToUser = addModuleToUser;
+
 		$scope.addModule = function () {
 			if ($scope.addingModule) {
 				var mod = {name: $scope.newMName, code: $scope.newMCode};
 				moduleService.post(mod, function (newMod) {
 					$('#addModule').foundation('reveal', 'close');
 					$rootScope.$emit('newModule', newMod);
+					addModuleToUser(newMod.key);
 				});
+			} else {
+				addModuleToUser($scope.newModule.key);
 			}
+			$('#addModule').foundation('reveal', 'close');
 		};
 	});
 });

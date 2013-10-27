@@ -18,12 +18,17 @@
 		<div class="header">
 			<div class="row">
 				<div class="large-12 columns">
-					<div class="signup">
+					<div class="signup" ng-show="!user">
 						<p><a href="#" data-reveal-id="login" class="medium secondary button">Login</a></p>
 					</div>
-					<div class="login">
+					<div class="login" ng-show="!user">
 						<p><a href="#" data-reveal-id="signup" class="medium secondary button">Signup</a></p>
 					</div>
+					<section ng-controller="LogoutCtrl">
+						<div class="login" ng-show="user">
+							<p><a href="#" class="medium secondary button" ng-click="logout()">Logout</a></p>
+						</div>
+					</section>
 					<center><figure id="canvas"></figure></center>
 					<h1 class="logo" align="center">Deadlines</h1>
 
@@ -35,7 +40,7 @@
 		<div class="row">
 
 			<div class="large-12 columns">
-				<center><h4 class="hello subheader">Hello {{user.name}} here are your deadlines:</h4></center>>
+				<center><h4 class="hello subheader">Hello {{user.name}} here are your deadlines:</h4></center>
 			</div>
 
 			<div align="center" class="large-12 columns">
@@ -60,7 +65,7 @@
 									<form id="deadline-form" ng-submit="addDeadline()" class="custom">
 										<td style="min-width: 100px;" ng-show="addingDeadline">
 											<span class="nullable">
-												<select ng-change="moduleChanged()" ng-model="newDModule" ng-options="m.name for m in modules">
+												<select ng-change="moduleChanged()" ng-model="newDModule" ng-options="m.name for m in user.modules">
 													<option value="" DISABLED>Select module</option>
 												</select>
 											</span>
@@ -77,7 +82,8 @@
 
 						</table>
 						<p><a href="#" ng-show="addingDeadline" ng-disabled="!newDModule.key || !newDTask || !newDDue" class="button small" ng-click="addDeadline()">Add</a></p>
-						<p><a href="#" ng-show="!addingDeadline" class="button small" ng-click="addClicked()">Add Deadline</a></p>
+						<p><a href="#" ng-show="!addingDeadline" class="button small" ng-click="addClicked()">Add Deadline</a>
+						<a href="#" data-reveal-id="addModule" class="button small" >Add Module</a></p>
 					</section>
 				</section>
 			</div>
@@ -116,7 +122,7 @@
 	<script src="js/controllers/usersCtrl.js"></script>
 	<script src="js/controllers/signupCtrl.js"></script>
 	<script src="js/services/userService.js"></script>
-	<script src="js/controllers/todoCtrl.js"></script>
+	<script src="js/controllers/logoutCtrl.js"></script>
 	<script src="js/services/todoStorage.js"></script>
 	<script src="js/directives/todoFocus.js"></script>
 	<script src="js/directives/todoBlur.js"></script>
@@ -188,8 +194,11 @@
 				<p>Code:</p>
 				<input type="text" name="code" placeholder="Module code" ng-model="newMCode">
 			</span>
-			<div align="center">
+			<div align="center" ng-show="addingNewModule">
 				<a href="#" class="medium button" ng-click="addModule()" ng-disabled="!newMName || !newMCode">Add Module</a>
+			</div>
+			<div align="center" ng-show="!addingNewModule">
+				<a href="#" class="medium button" ng-click="addModule()" ng-disabled="!newModule.key">Add Module</a>
 			</div>
 			<a class="close-reveal-modal">&#215;</a>
 		</section>

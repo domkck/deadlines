@@ -59,7 +59,7 @@ button.secondary:hover, button.secondary:focus, .button.secondary:hover, .button
 
 /* login/signup hacks */
 .login {
-	float: left;
+	float: right;
 	margin-top: 20px;
 }
 

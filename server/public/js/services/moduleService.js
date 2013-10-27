@@ -19,6 +19,11 @@ var moduleService = function($http) {
                 console.log("Nay :(");
                 callback();
             });
+        }, addToUser: function (moduleId, callback) {
+            $http({method: 'POST', url: 'http://127.0.0.1:4567/users/add_module/'+moduleId}).
+            success(function(data, status, headers, config) {
+                callback(data);
+            });
         }
     };
 };
