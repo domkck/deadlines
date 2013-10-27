@@ -5,7 +5,7 @@
  * - retrieves and persists the model via the todoStorage service
  * - exposes the model to the template and provides event handlers
  */
-todomvc.controller('DeadlinesCtrl', function DeadlinesCtrl($scope, $location, deadlineService, filterFilter) {
+todomvc.controller('DeadlinesCtrl', function DeadlinesCtrl($scope, $rootScope, $location, deadlineService, filterFilter) {
 	deadlineService.get(function (data) {
 		deadlineService.getModules(function (mods) {
 			mods.push({"name": "Add module...", "key": null});
@@ -50,9 +50,16 @@ todomvc.controller('DeadlinesCtrl', function DeadlinesCtrl($scope, $location, de
 			};
 			$scope.moduleChanged = function () {
 				if ($scope.newDModule.key === null) {
-
+					$('#addModule').foundation('reveal', 'open');
 				}
 			};
+
+			$rootScope.$on('newModule', function (event, mod) {
+				var addM = $scope.modules.pop();
+				$scope.modules.push(mod);
+				$scope.modules.push(addM);
+				$scope.newDModule = mod;
+			});
 		});
 	});
 });
