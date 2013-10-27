@@ -21,9 +21,12 @@
 					<div class="login">
 						<p><a href="#" data-reveal-id="signup" class="medium secondary button">Signup</a></p>
 					</div>
-					<h1 class="logo" align="center">Deadlines</h1>
-				</div>
-				<p align="center">Add deadlines and recieve reminders by text and email.</p>
+					<center><figure id="canvas"></figure></center>
+					<h1 class="logo" align="center">Deadlines</h1>				
+					
+
+					</div>
+					<h4 class="description" align="center">Add deadlines and recieve reminders by text and email.</h4>
 			</div>
 		</div>
 
@@ -32,7 +35,6 @@
 			<div class="large-12 columns">
 				<hr />
 				<h1><small>Add Your Name</small></h1>
-
 			</div>
 
 			<div align="center" class="large-12 columns">
@@ -93,8 +95,11 @@
 		<footer class="row">
 			<div class="large-12 columns">
 				<hr />
-				<span class="made"><p align="center">Made hastily in under 24 hours at the <a href="http://ucle.co/events/">UCL Hackathon</a> by the guys that are making <a href="http://crevent.co/">Crevent</a>.</p></span>
-			</div>
+				<center>
+				</center>
+				<span class="made"><p align="center">Made hastily in under 24 hours at the <a href="http://ucle.co/events/">UCL Hackathon</a> by the guys that work on <a href="http://crevent.co/">Crevent</a>.</p></span>
+
+				</div>
 		</footer>
 	</div>
 	<script src="js/vendor/underscore-min.js"></script>
@@ -120,6 +125,15 @@
 	<script>
 	$(document).foundation();
 	</script>
+
+	<!-- Adding Clock -->
+	  <script src="js/lib/svg.min.js" type="text/javascript" charset="utf-8"></script>
+	  <script src="js/lib/svg.easing.min.js" type="text/javascript" charset="utf-8"></script>
+	  <script src="js/svg.clock.js" type="text/javascript" charset="utf-8"></script>
+	  <script type="text/javascript" charset="utf-8">
+	    var draw = SVG('canvas').size(75, 75)
+		var clock = draw.clock('100%').start()
+	  </script>
 
 	<div id="login" class="reveal-modal tiny">
 		<h2 align="center" class="subheader">Go Go Go.</h2>

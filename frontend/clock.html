@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>A clock built with the svg.js library, inspired by the Swiss Railway clock</title>
+    <meta name="description" content="Inspired by the Swiss Railway Clock, a plugin for the svg.js library." />
+    
+    <style type="text/css" media="screen">
+      
+    </style>
+    
+  </head>
+  
+  <body>
+    <figure id="canvas"></figure>
+  </body>
+  
+  <script src="js/lib/svg.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/lib/svg.easing.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/svg.clock.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" charset="utf-8">
+    SVG('canvas').clock('25%').start()
+  </script>
+  
+</html>
