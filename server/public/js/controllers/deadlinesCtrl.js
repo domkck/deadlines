@@ -68,5 +68,5 @@ todomvc.controller('DeadlinesCtrl', function DeadlinesCtrl($scope, $rootScope, $
 
 	render();
 
-	$rootScope.$on('refresh', render);
+	//$rootScope.$on('refresh', render);
 });
