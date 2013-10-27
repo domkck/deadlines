@@ -4,6 +4,7 @@ require 'time'
 require 'sinatra'
 require 'sinatra/cookies'
 require 'ripple'
+require 'pony'
 
 require './texts'
 
@@ -179,7 +180,12 @@ post '/deadlines' do
   mod.save
 
   if @user and @user.number
-    send_text(@user.number, deadline.name, deadline.due.to_s)
+    send_text(@user.number, @user.name, deadline.name, deadline.due.to_s)
+  end
+
+  if @user and @user.email
+    body = "Hey #{@user.name}, just to remind you, #{deadline.name} is due #{deadline.due}"
+    Pony.mail(:to => @user.email, :from => 'dom@crevent.co', :subject => 'Reminder', :body => body)
   end
 
   deadline.to_json
