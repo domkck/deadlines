@@ -23,6 +23,10 @@
 .description {
 	color: #FFFFFF;
 }
+.hello {
+	margin-top: 30px;
+}
+
 
 /* Hack for sticky footer */
 * {
@@ -49,7 +53,7 @@ button.secondary, .button.secondary {
 }
 
 button.secondary:hover, button.secondary:focus, .button.secondary:hover, .button.secondary:focus {
-      background-color: #e8e8e8; }
+      background-color: #FFFFFF; }
 button.secondary:hover, button.secondary:focus, .button.secondary:hover, .button.secondary:focus {
       color: #3780C2; }
 
@@ -66,6 +70,6 @@ button.secondary:hover, button.secondary:focus, .button.secondary:hover, .button
 
 /* Made by the guys...*/
 .made {
-	font-size: 12px;
+	font-size: 14px;
 	color: #6F6F6F;
 }
