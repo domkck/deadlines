@@ -10,13 +10,13 @@
 	background-repeat: no-repeat;
 	background-position: center center;
 	color: #FFFFFF;
-	text-shadow: rgba(0,0,0,0.2) 0 1px 1px;
+	text-shadow: rgba(0,0,0,0.1) 0 1px 1px;
 }
 
 /* Big H1 */
 .logo {
 	color: #FFF;
-	text-shadow: rgba(0,0,0,0) 1px 1px;
+	text-shadow: rgba(0,0,0,0.3) 1px 1px;
 	font-size: 60px;
 
 }
