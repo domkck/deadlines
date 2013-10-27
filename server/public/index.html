@@ -52,23 +52,23 @@
 							<tbody id="deadlines-list">
 
 								<tr ng-repeat="deadline in deadlines">
-									<td>{{deadline.module.name}}</td>
-									<td>{{deadline.name}}</td>
-									<td>{{deadline.due}}</td>
+									<td style="min-width: 100px;">{{deadline.module.name}}</td>
+									<td style="min-width: 100px;">{{deadline.name}}</td>
+									<td style="min-width: 100px;">{{deadline.due}}</td>
 								</tr>
 								<tr>
 									<form id="deadline-form" ng-submit="addDeadline()" class="custom">
-										<td ng-show="addingDeadline">
+										<td style="min-width: 100px;" ng-show="addingDeadline">
 											<span class="nullable">
 												<select ng-change="moduleChanged()" ng-model="newDModule" ng-options="m.name for m in modules">
 													<option value="" DISABLED>Select module</option>
 												</select>
 											</span>
 										</td>
-										<td ng-show="addingDeadline">
+										<td style="min-width: 100px;"ng-show="addingDeadline">
 											<input id="new-d-task" placeholder="Task" type="text" name="task" ng-model="newDTask" autofocus>
 										</td>
-										<td ng-show="addingDeadline" id="new-d-submit-td">
+										<td style="min-width: 100px;" ng-show="addingDeadline" id="new-d-submit-td">
 											<input id="new-d-due" placeholder="Due (dd/mm/yy hh:mm)" type="datetime" name="deadline" ng-model="newDDue">
 										</td>
 									</form>
@@ -98,7 +98,7 @@
 				<hr />
 				<center>
 				</center>
-				<span class="made"><p align="center">Made hastily in under 24 hours at the <a href="http://ucle.co/events/">UCL Hackathon</a> by the guys that work on <a href="http://crevent.co/">Crevent</a>.</p></span>
+				<span class="made"><p align="center">Made in under 24 hours at the <a href="http://ucle.co/events/">UCL Hackathon</a> by the guys that work on <a href="http://crevent.co/">Crevent</a>.</p></span>
 
 				</div>
 		</footer>
