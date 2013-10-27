@@ -1,0 +1,5 @@
+/*global todomvc, angular *//**
+ * The main controller for the app. The controller:
+ * - retrieves and persists the model via the todoStorage service
+ * - exposes the model to the template and provides event handlers
+ */todomvc.controller("DeadlinesCtrl",function(t,n,r,i,s){i.get(function(e){i.getModules(function(s){s.push({name:"Add module...",key:null});t.addingDeadline=!1;var o=t.deadlines=e,u=t.modules=s;r.path()===""&&r.path("/");t.location=r;t.$watch("deadlines",function(e,n){if(e.length>n.length){i.post(e[e.length-1]);t.deadlines=_.sortBy(e,function(e){return e.dueDate})}},!0);t.addClicked=function(){t.addingDeadline=!0};t.addDeadline=function(){if(!t.newDModule||!t.newDTask||!t.newDDue.key)return!1;var e=t.newDModule,n=t.newDTask,r=moment(t.newDDue,"DD/MM/YY HH:mm")._d,i=moment(r).fromNow()+" ("+moment(r).format("DD/MM/YY HH:mm")+")";o.push({module:e,name:n,due:i,dueDate:r});t.newDModule=t.newDTask=t.newDDue="";t.addingDeadline=!1};t.moduleChanged=function(){t.newDModule.key===null&&$("#addModule").foundation("reveal","open")};n.$on("newModule",function(e,n){var r=t.modules.pop();t.modules.push(n);t.modules.push(r);t.newDModule=n})})})});
