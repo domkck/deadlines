@@ -17,13 +17,6 @@ todomvc.controller('ModulesCtrl', function ModulesCtrl($scope, $rootScope, $loca
 
 		$scope.location = $location;
 
-		// $scope.$watch('deadlines', function (newValue, oldValue) {
-		// 	if (newValue.length > oldValue.length) {
-		// 		deadlineService.post(newValue[newValue.length-1]);
-		// 		$scope.deadlines = _.sortBy(newValue, function(item) {return item.dueDate;});
-		// 	}
-		// }, true);
-
 		$scope.moduleChanged = function () {
 			if ($scope.newModule.key === null) {
 				$scope.addingModule = true;

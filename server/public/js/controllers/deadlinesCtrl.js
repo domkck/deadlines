@@ -30,7 +30,7 @@ todomvc.controller('DeadlinesCtrl', function DeadlinesCtrl($scope, $rootScope, $
 				$scope.addingDeadline = true;
 			};
 			$scope.addDeadline = function () {
-				if (!$scope.newDModule || !$scope.newDTask || !$scope.newDDue.key) {
+				if (!$scope.newDModule.key || !$scope.newDTask || !$scope.newDDue) {
 					return false;
 				}
 				var module = $scope.newDModule;
