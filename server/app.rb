@@ -55,6 +55,10 @@ helpers do
   end
 end
 
+get '/' do
+  redirect '/index.html'
+end
+
 post '/users' do
   content_type "application/json"
 
